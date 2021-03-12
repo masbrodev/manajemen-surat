@@ -20,7 +20,6 @@ class CreateSuratKeluarsTable extends Migration
             $table->string('nomor_surat');
             $table->string('perihal');
             $table->string('keterangan');
-            $table->integer('id_berkas');
             $table->timestamps();
         });
     }

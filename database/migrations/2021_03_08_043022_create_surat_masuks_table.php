@@ -20,9 +20,8 @@ class CreateSuratMasuksTable extends Migration
             $table->string('nomor_surat');
             $table->string('perihal');
             $table->longText('idk')->nullable(); //ISI DISPOSISI KABAG	
-            $table->string('lajur_disposisi')->nullable();
-            $table->string('keterangan')->nullable();
-            $table->integer('id_berkas');
+            $table->longText('lajur_disposisi')->nullable();
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

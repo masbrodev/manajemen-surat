@@ -16,6 +16,5 @@ class SuratMasuk extends Model
         'idk',
         'lajur_disposisi',
         'keterangan',
-        'id_berkas'
     ];
 }

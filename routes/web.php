@@ -36,4 +36,6 @@ Route::get('kategori/hapus/{id}', 'KategoriController@hapus');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('suratmasuk', 'SuratMasukController');
+Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
+
 Route::resource('suratkeluar', 'SuratKeluarController');

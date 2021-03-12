@@ -14,7 +14,10 @@ class CreateBerkasTable extends Migration
     public function up()
     {
         Schema::create('berkas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nama_berkas');
+            $table->string('lokasi');
+            $table->morphs('surat');
             $table->timestamps();
         });
     }

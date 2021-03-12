@@ -14,6 +14,5 @@ class SuratKeluar extends Model
         'nomor_surat',
         'perihal',
         'keterangan',
-        'id_berkas'
     ];
 }
