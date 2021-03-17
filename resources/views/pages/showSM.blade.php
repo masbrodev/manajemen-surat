@@ -21,9 +21,33 @@
         <!-- /.card-header -->
         <div class="card-body p-0">
             <div class="mailbox-read-info">
-                <h5>Perihal: {{ $sm->perihal }}</h5>
-                <h6>Nomor Surat: {{ $sm->nomor_surat  }} <br>
-                    Asal Surat: {{ $sm->asal_surat  }}
+                <table>
+                    <tr>
+                        <td>
+                            <h5>Perihal </h5>
+                        </td>
+                        <td>
+                            <h5>: {{ $sm->perihal }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6>Nomor Surat</h6>
+                        </td>
+                        <td>
+                            <h6>: {{ $sm->nomor_surat  }} </h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6>Asal Surat </h6>
+                        </td>
+                        <td>
+                            <h6>: {{ $sm->asal_surat  }}</h6>
+                        </td>
+                    </tr>
+                </table>
+                <h6>
                     <span class="mailbox-read-time float-right"> {{ \Carbon\Carbon::parse($sm->tanggal_terima)->isoFormat('D - MMMM - Y') }}</span>
                 </h6>
             </div>
@@ -71,11 +95,9 @@
         <!-- /.card-footer -->
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
+                <a class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
+                <a class="btn btn-default" href="{{ URL::to('suratmasuk/'.$sm->id.'/edit') }}"><i class="fas fa-print"></i> Edit</a>
             </div>
-            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
         </div>
         <!-- /.card-footer -->
     </div>

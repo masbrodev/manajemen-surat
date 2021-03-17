@@ -15,6 +15,11 @@ class SuratMasuk extends Model
         'perihal',
         'idk',
         'lajur_disposisi',
-        'keterangan',
+        'keterangan1',
+        'keterangan2',
+        'catatan',
+        'nomor_agenda',
+        'sifat_surat',
+        'tindak_lanjut',
     ];
 }

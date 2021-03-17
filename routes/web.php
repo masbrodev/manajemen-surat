@@ -37,5 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('suratmasuk', 'SuratMasukController');
 Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
+Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
+Route::post('del_berkas', 'SuratMasukController@del_berkas');
 
 Route::resource('suratkeluar', 'SuratKeluarController');

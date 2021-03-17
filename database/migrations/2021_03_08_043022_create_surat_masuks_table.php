@@ -18,10 +18,15 @@ class CreateSuratMasuksTable extends Migration
             $table->date('tanggal_terima');
             $table->string('asal_surat');
             $table->string('nomor_surat');
+            $table->integer('nomor_agenda')->nullable();
+            $table->string('sifat_surat')->nullable();
             $table->string('perihal');
             $table->longText('idk')->nullable(); //ISI DISPOSISI KABAG	
             $table->longText('lajur_disposisi')->nullable();
-            $table->longText('keterangan')->nullable();
+            $table->longText('catatan')->nullable();
+            $table->longText('keterangan1')->nullable();
+            $table->longText('keterangan2')->nullable();
+            $table->longText('tindak_lanjut')->nullable();
             $table->timestamps();
         });
     }
