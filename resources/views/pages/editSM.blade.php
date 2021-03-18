@@ -308,7 +308,10 @@
         },
         init: function() {
             myDropzone = this;
-            var aa = [];
+            var ss = [];
+            var lj = [];
+            var ct = [];
+            var tdl = [];
 
 
             $.ajax({
@@ -336,9 +339,23 @@
             });
 
             $("#edit").on('click', function() {
-                $("input[type=checkbox]:checked").each(function() {
-                    aa.push($(this).val());
+
+                $("input[name='sifat_surat[]']:checked").each(function() {
+                    ss.push($(this).val());
                 });
+
+                $("input[name='lajur_disposisi[]']:checked").each(function() {
+                    lj.push($(this).val());
+                });
+
+                $("input[name='catatan[]']:checked").each(function() {
+                    ct.push($(this).val());
+                });
+
+                $("input[name='tindak_lanjut[]']:checked").each(function() {
+                    tdl.push($(this).val());
+                });
+
                 $.ajax({
                     async: true,
                     url: "{{ route('suratmasuk.update', $sm->id ) }}",
@@ -347,10 +364,15 @@
                         'tanggal_terima': $('#datepicker').val(),
                         'asal_surat': $('#asal_surat').val(),
                         'nomor_surat': $('#nomor_surat').val(),
+                        'nomor_agenda': $('#nomor_agenda').val(),
                         'perihal': $('#perihal').val(),
                         'idk': $('#idk').val(),
-                        'lajur_disposisi': aa,
-                        'keterangan': $('#keterangan').val(),
+                        'keterangan1': $('#keterangan1').val(),
+                        'keterangan2': $('#keterangan2').val(),
+                        'sifat_surat': ss,
+                        'lajur_disposisi': lj,
+                        'catatan': ct,
+                        'tindak_lanjut': tdl,
                         '_method': 'PUT',
                         '_token': '{{ csrf_token() }}'
                     },
@@ -360,11 +382,11 @@
                     beforeSend: function() {
                         $.LoadingOverlay("show");
 
-                        console.log($('#asal_surat').val());
+                        // console.log($('#asal_surat').val());
                     },
                     success: function(response) {
                         if (myDropzone.getQueuedFiles().length == 0) {
-                            // window.location.href = "{{ URL::to('suratmasuk ') }}";
+                            window.location.href = "{{ URL::to('suratmasuk ') }}";
                         } else {
                             myDropzone.processQueue();
                         }
