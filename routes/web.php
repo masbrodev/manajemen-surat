@@ -16,22 +16,15 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+    Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
     return view('welcome');
 });
 
-Route::get('/a', function () {
-     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
-    return view('pages.produk');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('kategori', 'KategoriController@index');
-Route::post('kategori/tambah', 'KategoriController@tambah');
-Route::post('kategori/edit/{id}', 'KategoriController@edit');
-Route::get('kategori/hapus/{id}', 'KategoriController@hapus');
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -39,5 +32,6 @@ Route::resource('suratmasuk', 'SuratMasukController');
 Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
 Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
 Route::post('del_berkas', 'SuratMasukController@del_berkas');
+Route::get('printsm/{id}', 'SuratMasukController@print');
 
 Route::resource('suratkeluar', 'SuratKeluarController');

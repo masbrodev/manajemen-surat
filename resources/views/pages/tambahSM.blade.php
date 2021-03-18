@@ -16,7 +16,7 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Tambah Surat Masuk</h3>
                     </div>
@@ -241,7 +241,7 @@
                     </div>
                     <div class="card-footer">
                         <span style="color: red;">* Wajib diisi</span>
-                        <input type="submit" id="tambah" name="tambah" value="Simpan" class="btn btn-primary float-sm-right">
+                        <input type="submit" id="tambah" name="tambah" value="Simpan" class="btn btn-success float-sm-right">
                     </div>
                     </form>
                 </div>
@@ -249,34 +249,6 @@
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="alert">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Prestasi</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <label>Nama Prestasi</label>
-                <input type="text" class="form-control" name="nama_prestasi">
-                <br>
-                <label>Tahun</label>
-                <input type="text" class="form-control" name="tahun">
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-warning">Simpan</button>
-            </div>
-        </div>
-
-    </div>
-    <!-- /.modal-content -->
-</div>
-
-
 
 
 @endsection
@@ -294,8 +266,8 @@
     }
 
     .dropzone {
-        border: 2px dashed #028AF4 !important;
-        color: blue;
+        border: 2px dashed #0da622 !important;
+        color: green;
     }
 
     .dropzone i {

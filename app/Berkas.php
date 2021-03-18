@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\SuratMasuk;
 
 class Berkas extends Model
 {
@@ -14,4 +15,9 @@ class Berkas extends Model
         'surat_type',
         'surat_id'
     ];
+
+    public function berkas()
+    {
+        return $this->belongsTo(SuratMasuk::class, 'surat_id', 'id');
+    }
 }

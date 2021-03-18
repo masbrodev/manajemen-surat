@@ -16,7 +16,7 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Edit Surat Masuk</h3>
                     </div>
@@ -239,7 +239,7 @@
                     </div>
                     <div class="card-footer">
                         <span style="color: red;">* Wajib diisi</span>
-                        <input type="submit" id="edit" name="edit" value="Simpan" class="btn btn-primary float-sm-right">
+                        <input type="submit" id="edit" name="edit" value="Simpan" class="btn btn-success float-sm-right">
                     </div>
                 </div>
             </div>
@@ -263,8 +263,8 @@
     }
 
     .dropzone {
-        border: 2px dashed #028AF4 !important;
-        ;
+        border: 2px dashed #0da622 !important;
+        color: green;
     }
 
     .dropzone .dz-preview.dz-complete .dz-success-mark {

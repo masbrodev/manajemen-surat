@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Berkas;
 
 class SuratMasuk extends Model
 {
@@ -22,4 +23,9 @@ class SuratMasuk extends Model
         'sifat_surat',
         'tindak_lanjut',
     ];
+
+    public function berkas()
+    {
+        return $this->hasMany(Berkas::class, 'surat_id', 'id');
+    }
 }
