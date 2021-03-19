@@ -74,8 +74,16 @@
                             <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" placeholder="Nomor Agenda" value="{{ $sm->nomor_agenda }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
-                            <label>Nomor Surat <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" value="{{ $sm->nomor_surat }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Nomor Surat <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" value="{{ $sm->nomor() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Tanggal <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" value="{{ $sm->tanggal() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Asal Surat <span class="text-danger">*</span></label>
@@ -364,6 +372,7 @@
                         'tanggal_terima': $('#datepicker').val(),
                         'asal_surat': $('#asal_surat').val(),
                         'nomor_surat': $('#nomor_surat').val(),
+                        'tanggal_surat': $('#tanggal_surat').val(),
                         'nomor_agenda': $('#nomor_agenda').val(),
                         'perihal': $('#perihal').val(),
                         'idk': $('#idk').val(),

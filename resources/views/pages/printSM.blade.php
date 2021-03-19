@@ -1939,7 +1939,7 @@
                     <div class="t m0 x4 h4 y4 ff1 fs1 fc0 sc0 ls0 ws0">Tanggal Terima</div>
                     <div class="t m0 x5 h5 y5 ff1 fs2 fc0 sc0 ls0 ws0">: <strong> {{ \Carbon\Carbon::parse($sm->tanggal_terima)->isoFormat('D MMMM Y') }}</strong></div>
                     <div class="t m0 x3 h6 y6 ff1 fs3 fc0 sc0 ls0 ws0">Nomor / Tanggal</div>
-                    <div class="t m0 x6 h5 y7 ff1 fs2 fc0 sc0 ls0 ws0">: {{ $sm->nomor_agenda}} Tanggal: {{ \Carbon\Carbon::parse($sm->tanggal_terima)->isoFormat('D MMMM Y') }} </div>
+                    <div class="t m0 x6 h5 y7 ff1 fs2 fc0 sc0 ls0 ws0">: {{ $sm->nomor()}} Tanggal: {{ \Carbon\Carbon::parse($sm->tanggal())->isoFormat('D MMMM Y') }} </div>
                     <div class="t m0 x3 h6 y8 ff1 fs3 fc0 sc0 ls0 ws0">Asal surat</div>
                     <div class="t m0 x6 h5 y9 ff1 fs2 fc0 sc0 ls0 ws0">: {{ $sm->asal_surat }}</div>
                 </div>

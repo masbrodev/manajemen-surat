@@ -60,7 +60,7 @@ class SuratMasukController extends Controller
             SuratMasuk::create([
                 'tanggal_terima' => $request->tanggal_terima,
                 'asal_surat' => $request->asal_surat,
-                'nomor_surat' => $request->nomor_surat,
+                'nomor_surat' => $request->nomor_surat . '_tgl_' . $request->tanggal_surat,
                 'nomor_agenda' => $request->nomor_agenda,
                 'perihal' => $request->perihal,
                 'idk' => $request->idk,
@@ -224,7 +224,7 @@ class SuratMasukController extends Controller
         $data = [
             'tanggal_terima' => $request->tanggal_terima,
             'asal_surat' => $request->asal_surat,
-            'nomor_surat' => $request->nomor_surat,
+            'nomor_surat' => $request->nomor_surat . '_tgl_' . $request->tanggal_surat,
             'nomor_agenda' => $request->nomor_agenda,
             'perihal' => $request->perihal,
             'idk' => $request->idk,

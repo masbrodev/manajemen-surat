@@ -32,10 +32,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <h6>Nomor Surat</h6>
+                                <h6>Nomor / Tanggal</h6>
                             </td>
                             <td>
-                                <h6>: {{ $sm->nomor_surat  }} </h6>
+                                <h6>: {{ $sm->nomor() . ' | Tanggal: '.\Carbon\Carbon::parse($sm->tanggal())->isoFormat('D MMMM Y') }} </h6>
                             </td>
                         </tr>
                         <tr>
@@ -65,7 +65,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h4 class="text-center">Berkas</h4>
+                                    <h4 class="text-center">@if(count($berkas) == 0)  Berkas Tidak Ada @else Berkas @endif</h4>
                                     <hr>
                                     <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
                                         @foreach($berkas as $b)
@@ -235,7 +235,7 @@
             <div class="card-footer">
                 <div class="float-right">
                     <a class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
-                    <a class="btn btn-default" href="{{ URL::to('suratmasuk/'.$sm->id.'/edit') }}"><i class="fas fa-print"></i> Edit</a>
+                    <a class="btn btn-default" href="{{ URL::to('suratmasuk/'.$sm->id.'/edit') }}"><i class="fa fa-cog"></i> Edit</a>
                     <a class="btn btn-default" href="{{ URL::to('printsm/'.$sm->id) }}" target="_blank"><i class="fas fa-print"></i> Print</a>
                 </div>
             </div>

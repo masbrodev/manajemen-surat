@@ -18,7 +18,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Asal Surat</th>
                                 <th>Perihal</th>
-                                <th>Nomor Surat</th>
+                                <th>Nomor | Tanggal</th>
                                 <th>Tanggal Terima</th>
                                 <th style="width: 200px">Aksi</th>
                             </tr>
@@ -29,7 +29,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $r->asal_surat }}</td>
                                 <td>{{ $r->perihal }}</td>
-                                <td>{{ $r->nomor_surat }}</td>
+                                <td>{{ $r->nomor() .' | '. \Carbon\Carbon::parse($r->tanggal())->isoFormat('D-MMMM-Y')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($r->tanggal_terima)->isoFormat('D-MMMM-Y') }}</td>
                                 <td>
                                     <div class="input-group">
