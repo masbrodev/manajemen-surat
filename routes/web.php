@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
-    return view('welcome');
+    // Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+    // return view('welcome');
+
+    return redirect('/home');
 });
 
 Auth::routes([
@@ -31,7 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('suratmasuk', 'SuratMasukController');
 Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
 Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
-Route::post('del_berkas', 'SuratMasukController@del_berkas');
+Route::get('del_berkas/{id}', 'SuratMasukController@del_berkas');
 Route::get('printsm/{id}', 'SuratMasukController@print');
 
 Route::resource('suratkeluar', 'SuratKeluarController');

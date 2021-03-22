@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content_header')
-<h1>Data Surat Masuk</h1>
+
 @stop
 
 @section('content')
@@ -9,10 +9,14 @@
 @section('plugins.Toastr', true)
 <div class="container">
     <div class="col-md-12">
-        <div class="card">
+        <div class="card card-success card-outline">
             <div class="card-header">
+                <h4 class="card-title">Data Surat Masuk</h4>
+                <a class="btn btn-outline-primary float-right" href="{{URL::to('suratmasuk/create')}}">Tambah</a>
+            </div>
+            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="surat-masuk">
+                    <table class="table table-hover display nowrap table-sm" id="surat-masuk">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -33,11 +37,11 @@
                                 <td>{{ \Carbon\Carbon::parse($r->tanggal_terima)->isoFormat('D-MMMM-Y') }}</td>
                                 <td>
                                     <div class="input-group">
-                                    @if(count($r->berkas) == 0)
-                                        <a class="btn btn-outline-danger" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="Berkas Tidak Ada">lihat</a>
-                                    @else
-                                    <a class="btn btn-outline-success" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="{{ count($r->berkas) }} Berkas">lihat</a>
-                                    @endif
+                                        @if(count($r->berkas) == 0)
+                                        <a class="btn btn-sm btn-outline-danger" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="Berkas Tidak Ada">lihat</a>
+                                        @else
+                                        <a class="btn btn-sm btn-outline-success" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="{{ count($r->berkas) }} Berkas">lihat</a>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -45,29 +49,32 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
+            <!-- /.card-body -->
         </div>
     </div>
-    <!-- /.card -->
+</div>
+<!-- /.card -->
 
-    @endsection
+@endsection
 
-    @section('adminlte_js')
-    <script>
-        $(function() {
-            $("#surat-masuk").DataTable({
-                language: {
-                    search: 'Cari:',
-                    lengthMenu: 'Tampilkan _MENU_ baris',
-                    zeroRecords: 'Data Tidak Ditemukan',
-                    info: 'Total data _MAX_',
-                    infoEmpty: 'Data Kosong',
-                    infoFiltered: '(filtered from _MAX_ total records)'
-                },
-                "responsive": true,
-                "autoWidth": false,
-            });
+@section('adminlte_js')
+{!! Toastr::message() !!}
+<script>
+    $(function() {
+        $("#surat-masuk").DataTable({
+            language: {
+                search: 'Cari:',
+                previous: 'Cari:',
+                lengthMenu: 'Tampilkan _MENU_ baris',
+                zeroRecords: 'Data Tidak Ditemukan',
+                info: 'Total data _MAX_',
+                infoEmpty: 'Data Kosong',
+                infoFiltered: '(filtered from _MAX_ total records)'
+            },
+            "responsive": true,
+            "autoWidth": false,
         });
-    </script>
-    @endsection
+    });
+</script>
+@endsection

@@ -65,7 +65,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h4 class="text-center">@if(count($berkas) == 0)  Berkas Tidak Ada @else Berkas @endif</h4>
+                                    <h4 class="text-center">@if(count($berkas) == 0) Berkas Tidak Ada @else Berkas @endif</h4>
                                     <hr>
                                     <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
                                         @foreach($berkas as $b)
@@ -73,10 +73,10 @@
                                             <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
 
                                             <div class="mailbox-attachment-info">
-                                                <a href=" {{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
+                                                <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
                                                 <span class="mailbox-attachment-size clearfix mt-1">
                                                     <span>file PDF </span>
-                                                    <a href="#" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
+                                                    <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" download="{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
                                                 </span>
                                             </div>
                                         </li>
@@ -234,7 +234,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
                 <div class="float-right">
-                    <a class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#hapus"><i class="far fa-trash-alt"></i> Hapus</button>
                     <a class="btn btn-default" href="{{ URL::to('suratmasuk/'.$sm->id.'/edit') }}"><i class="fa fa-cog"></i> Edit</a>
                     <a class="btn btn-default" href="{{ URL::to('printsm/'.$sm->id) }}" target="_blank"><i class="fas fa-print"></i> Print</a>
                 </div>
@@ -246,15 +246,37 @@
 </div>
 <!-- /.row -->
 
+<div class="modal fade" id="hapus">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Hapus Data Surat Masuk</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Apakah Anda Yakin Menghapus Data Ini ?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
+                <form action="{{ URL::route('suratmasuk.destroy', $sm->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="btn btn-outline-danger float-sm-left">Hapus</button>
+                    <!-- <button>Delete User</button> -->
+                    <!-- <a href="{{ URL::to('suratmasuk//'.$sm->id) }}" class="btn btn-outline-danger float-sm-left">Hapus</a> -->
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.modal-content -->
+</div>
+
 @endsection
 
 @section('adminlte_js')
-<script>
-    $(function() {
-        $("#table-kategori").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-    });
-</script>
+{!! Toastr::message() !!}
+
 @endsection

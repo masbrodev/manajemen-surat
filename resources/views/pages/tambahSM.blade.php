@@ -28,7 +28,7 @@
                         </form>
                         <br>
 
-                        <form id="form-tambah" action="">
+                        <form id="form-tambah" action="{{ URL::to('suratmasuk/'. $id) }}">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card">
@@ -366,6 +366,7 @@
                         'lajur_disposisi': lj,
                         'catatan': ct,
                         'tindak_lanjut': tdl,
+                        'id_r': '{{$id}}',
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -404,7 +405,7 @@
                     var _this = this;
                     _this.removeAllFiles();
                     $.LoadingOverlay("hide");
-                    window.location.href = "{{ URL::to('suratmasuk') }}";
+                    window.location.href = "{{ URL::to('suratmasuk/'. $id) }}";
 
                 }
             });

@@ -5,7 +5,6 @@
 
 @section('content')
 @section('plugins.Toastr', true)
-@section('plugins.Datepicker', true)
 @section('plugins.Dropzone', true)
 @section('plugins.LoadingOverlay', true)
 
@@ -28,9 +27,12 @@
                         </form>
                         <br>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
+                                        @if(count($berkas) != 0)
+                                        <button type="button" class="btn btn-outline-success float-sm-right" data-toggle="modal" data-target="#opsi-berkas">Opsi Berkas</button>
+                                        @endif
                                         <label>Sifat Surat <span class="text-danger">*</span></label>
 
                                         <div class="row">
@@ -255,6 +257,37 @@
     </div>
 </section>
 
+<div class="modal fade" id="opsi-berkas">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Opsi Berkas</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                    @foreach($berkas as $b)
+                    <li>
+                        <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
+
+                        <div class="mailbox-attachment-info">
+                            <a href=" {{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
+                            <span class="mailbox-attachment-size clearfix mt-1">
+                                <span>Hapus File</span>
+                                <a href=" {{ URL::to('del_berkas/'.$b->id)}} " class="btn btn-outline-danger btn-sm float-right"><i class="fas fa-trash"></i></a>
+                            </span>
+                        </div>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.modal-content -->
+</div>
 
 @endsection
 
@@ -310,7 +343,7 @@
         acceptedFiles: ".pdf",
         addRemoveLinks: true,
         parallelUploads: 5,
-
+        dictDefaultMessage: "<strong>Drop files here or click to upload. </strong>",
         removedfile: function(file) {
             file.previewElement.remove();
         },
@@ -429,8 +462,7 @@
                     var _this = this;
                     _this.getUploadingFiles();
                     $.LoadingOverlay("hide");
-                    // window.location.href = "{{ URL::to('suratmasuk') }}";
-
+                    window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}";
                 }
             });
 

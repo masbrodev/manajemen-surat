@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Carbon;
 use App\Berkas;
+use FFI\Exception;
+use Illuminate\Support\Facades\DB;
 
 class SuratMasukController extends Controller
 {
@@ -17,6 +19,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
+        Toastr::success('Data Surat Masuk Berhasil Diperbaharui');
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
         }])->orderBy('id', 'DESC')->get();
@@ -35,7 +38,6 @@ class SuratMasukController extends Controller
         $count = SuratMasuk::count();
 
         $data['id'] = ($count == 0) ? 1 : SuratMasuk::all()->last()->id + 1;
-        Toastr::success('Data Surat Masuk Berhasil Diperbaharui');
 
         // return $data;
 
@@ -72,9 +74,7 @@ class SuratMasukController extends Controller
                 'keterangan2' => $request->keterangan2,
             ]);
 
-            return response()->json([
-                'pesan' => 'sukses',
-            ], 201);
+            return redirect('suratmasuk/'.$request->id_r)->with([Toastr::warning('Data Surat Masuk Berhasil Ditambah')]);
         }
 
         // $simpan = SuratMasuk::create($data);
@@ -113,10 +113,10 @@ class SuratMasukController extends Controller
     {
         $data['sm'] = SuratMasuk::where('id', $id)->first();
 
-        $data['ss'] = explode(",", $data['sm']->sifat_surat);
-        $data['lj'] = explode(",", $data['sm']->lajur_disposisi);
-        $data['ct'] = explode(",", $data['sm']->catatan);
-        $data['tdl'] = explode(",", $data['sm']->tindak_lanjut);
+        $data['ss'] = ($data['sm']->sifat_surat == null) ? explode(",", "a") : explode(",", $data['sm']->sifat_surat);
+        $data['lj'] = ($data['sm']->lajur_disposisi == null) ? explode(",", "a") : explode(",", $data['sm']->lajur_disposisi);
+        $data['ct'] = ($data['sm']->catatan == null) ? explode(",", "a") : explode(",", $data['sm']->catatan);
+        $data['tdl'] = ($data['sm']->tindak_lanjut == null) ? explode(",", "a") : explode(",", $data['sm']->tindak_lanjut);
 
         $data['berkas'] = Berkas::where('surat_id', $data['sm']->id)->where('surat_type', 'surat_masuk')->get();
 
@@ -192,17 +192,19 @@ class SuratMasukController extends Controller
         return $datas;
     }
 
-    public function del_berkas(Request $request)
+    public function del_berkas($id)
     {
-        $filename =  $request->get('filename');
-        $data = Berkas::where('nama_berkas', $filename)->first();
-        $path = public_path('berkas/') . $data->lokasi . '/' . $filename;
+        // $filename =  $request->get('filename');
+        $data = Berkas::where('id', $id)->first();
+        $path = public_path('berkas/') . $data->lokasi . '/' . $data->nama_berkas;
 
         if (file_exists($path)) {
             $data->delete();
             unlink($path);
+            return redirect()->back()->with([Toastr::warning('Berkas Berhasil Dihapus')]);
+        } else {
+            return redirect()->back()->with([Toastr::error('Berkas Santri Gagal Dihapus')]);
         }
-        return response()->json(['success' => $filename]);
     }
 
     /**
@@ -250,8 +252,31 @@ class SuratMasukController extends Controller
      * @param  \App\SuratMasuk  $suratMasuk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SuratMasuk $suratMasuk)
+    public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $data['sm'] = SuratMasuk::where('id', $id)->first();
+
+            $data['db_berkas'] = Berkas::where('surat_id', $data['sm']->id)->where('surat_type', 'surat_masuk')->get();
+
+
+            // $data = Produk::with('foto_produk')->find($id);
+            foreach ($data['db_berkas'] as $f) {
+                $path = public_path('berkas/') . $f->lokasi . '/' . $f->nama_berkas;
+                unlink($path);
+                Berkas::where('surat_id', $f->surat_id)->delete();
+
+                // File::delete('assets/foto_produk/' . $f->foto_produk);
+            }
+            $hapus = $data['sm']->delete();
+            if ($hapus) {
+                DB::commit();
+                return redirect('suratmasuk')->with([Toastr::warning('Data Surat Masuk Berhasil Dihapus')]);
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
     }
 }
