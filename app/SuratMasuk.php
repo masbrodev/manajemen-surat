@@ -15,7 +15,6 @@ class SuratMasuk extends Model
         'asal_surat',
         'nomor_surat',
         'perihal',
-        'idk',
         'lajur_disposisi',
         'keterangan1',
         'keterangan2',

@@ -19,7 +19,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        Toastr::success('Data Surat Masuk Berhasil Diperbaharui');
+        // Toastr::success('Data Surat Masuk Berhasil Diperbaharui');
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
         }])->orderBy('id', 'DESC')->get();
@@ -38,6 +38,7 @@ class SuratMasukController extends Controller
         $count = SuratMasuk::count();
 
         $data['id'] = ($count == 0) ? 1 : SuratMasuk::all()->last()->id + 1;
+        $data['na'] = ($count == 0) ? "" : SuratMasuk::all()->last()->nomor_agenda;
 
         // return $data;
 
@@ -65,7 +66,6 @@ class SuratMasukController extends Controller
                 'nomor_surat' => $request->nomor_surat . '_tgl_' . $request->tanggal_surat,
                 'nomor_agenda' => $request->nomor_agenda,
                 'perihal' => $request->perihal,
-                'idk' => $request->idk,
                 'lajur_disposisi' => $lj,
                 'catatan' => $ct,
                 'sifat_surat' => $ss,
@@ -74,7 +74,7 @@ class SuratMasukController extends Controller
                 'keterangan2' => $request->keterangan2,
             ]);
 
-            return redirect('suratmasuk/'.$request->id_r)->with([Toastr::warning('Data Surat Masuk Berhasil Ditambah')]);
+            return redirect('suratmasuk/'.$request->id_r)->with([Toastr::success('Data Surat Masuk Berhasil Ditambah')]);
         }
 
         // $simpan = SuratMasuk::create($data);
@@ -113,10 +113,10 @@ class SuratMasukController extends Controller
     {
         $data['sm'] = SuratMasuk::where('id', $id)->first();
 
-        $data['ss'] = ($data['sm']->sifat_surat == null) ? explode(",", "a") : explode(",", $data['sm']->sifat_surat);
-        $data['lj'] = ($data['sm']->lajur_disposisi == null) ? explode(",", "a") : explode(",", $data['sm']->lajur_disposisi);
-        $data['ct'] = ($data['sm']->catatan == null) ? explode(",", "a") : explode(",", $data['sm']->catatan);
-        $data['tdl'] = ($data['sm']->tindak_lanjut == null) ? explode(",", "a") : explode(",", $data['sm']->tindak_lanjut);
+        $data['ss'] = ($data['sm']->sifat_surat == "") ? explode(",", "a") : explode(",", $data['sm']->sifat_surat);
+        $data['lj'] = ($data['sm']->lajur_disposisi == "") ? explode(",", "a") : explode(",", $data['sm']->lajur_disposisi);
+        $data['ct'] = ($data['sm']->catatan == "") ? explode(",", "a") : explode(",", $data['sm']->catatan);
+        $data['tdl'] = ($data['sm']->tindak_lanjut == "") ? explode(",", "a") : explode(",", $data['sm']->tindak_lanjut);
 
         $data['berkas'] = Berkas::where('surat_id', $data['sm']->id)->where('surat_type', 'surat_masuk')->get();
 
@@ -229,7 +229,6 @@ class SuratMasukController extends Controller
             'nomor_surat' => $request->nomor_surat . '_tgl_' . $request->tanggal_surat,
             'nomor_agenda' => $request->nomor_agenda,
             'perihal' => $request->perihal,
-            'idk' => $request->idk,
             'lajur_disposisi' => $lj,
             'catatan' => $ct,
             'sifat_surat' => $ss,

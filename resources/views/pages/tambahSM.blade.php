@@ -28,52 +28,60 @@
                         </form>
                         <br>
 
-                        <form id="form-tambah" action="{{ URL::to('suratmasuk/'. $id) }}">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <label>Sifat Surat <span class="text-danger">*</span></label>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <label>Sifat Surat <span class="text-danger">*</span></label>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss1" value="Rahasia">
-                                                        <label for="ss1" class="custom-control-label">Rahasia</label>
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss1" value="Rahasia">
+                                                    <label for="ss1" class="custom-control-label">Rahasia</label>
                                                 </div>
-
-                                                <div class="col-md-3">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss2" value="Penting / Segera">
-                                                        <label for="ss2" class="custom-control-label">Penting / Segera</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss3" value="Biasa">
-                                                        <label for="ss3" class="custom-control-label">Biasa</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss4" value="Tembusan">
-                                                        <label for="ss4" class="custom-control-label">Tembusan</label>
-                                                    </div>
-                                                </div>
-
                                             </div>
 
+                                            <div class="col-md-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss2" value="Penting / Segera">
+                                                    <label for="ss2" class="custom-control-label">Penting / Segera</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss3" value="Biasa">
+                                                    <label for="ss3" class="custom-control-label">Biasa</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="sifat_surat[]" id="ss4" value="Tembusan">
+                                                    <label for="ss4" class="custom-control-label">Tembusan</label>
+                                                </div>
+                                            </div>
 
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <form id="form-tambah" action="{{ URL::to('suratmasuk/'. $id) }}">
                             <div class="form-group">
-                                <label>Nomor Agenda <span class="text-danger">*</span></label>
-                                <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Nomor Agenda <span class="text-danger">*</span></label>   <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
+                                        <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Tanggal Terima <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" id="datepicker" name="tanggal_terima" placeholder="Tanggal Terima" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -82,26 +90,22 @@
                                         <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Tanggal <span class="text-danger">*</span></label>
+                                        <label>Tanggal Surat<span class="text-danger">*</span></label>
                                         <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Asal Surat <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="asal_surat" id="asal_surat" placeholder="Asal Surat" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
-                            </div>
-                            <div class="form-group">
-                                <label>Perihal <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="perihal" id="perihal" placeholder="Perihal" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
-                            </div>
-                            <div class="form-group" id="date">
-                                <label>Tanggal Terima <span class="text-danger">*</span></label>
-                                <input type="date" class="form-control" id="datepicker" name="tanggal_terima" placeholder="Tanggal Terima" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
-                            </div>
-                            <div class="form-group">
-                                <label>Isi Disposisi <small>(KABAG)</small></label>
-                                <textarea type="text" class="form-control" name="idk" id="idk" placeholder="Isi Disposisi"></textarea>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Asal Surat <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="asal_surat" id="asal_surat" placeholder="Asal Surat" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Perihal <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="perihal" id="perihal" placeholder="Perihal" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Keterangan 1 <small>(KABAG)</small></label>
@@ -314,7 +318,7 @@
     Dropzone.options.dropzoneForm = {
         autoProcessQueue: false,
         acceptedFiles: ".pdf",
-        addRemoveLinks: true,
+        addRemoveLinks: false,
         parallelUploads: 5,
         removedfile: function(file) {
             file.previewElement.remove();

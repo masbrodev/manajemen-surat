@@ -72,8 +72,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Nomor Agenda <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" placeholder="Nomor Agenda" value="{{ $sm->nomor_agenda }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Nomor Agenda <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" placeholder="Nomor Agenda" value="{{ $sm->nomor_agenda }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Tanggal Terima <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="datepicker" name="tanggal_terima" placeholder="Tanggal Terima" value="{{ \Carbon\Carbon::parse($sm->tanggal_terima)->format('Y-m-d') }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -82,28 +90,23 @@
                                     <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" value="{{ $sm->nomor() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Tanggal <span class="text-danger">*</span></label>
+                                    <label>Tanggal Surat<span class="text-danger">*</span></label>
                                     <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" value="{{ $sm->tanggal() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Asal Surat <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="asal_surat" id="asal_surat" placeholder="Asal Surat" value="{{ $sm->asal_surat }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Asal Surat <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="asal_surat" id="asal_surat" placeholder="Asal Surat" value="{{ $sm->asal_surat }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Perihal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="perihal" id="perihal" placeholder="Perihal" value="{{ $sm->perihal }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Perihal <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="perihal" id="perihal" placeholder="Perihal" value="{{ $sm->perihal }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
-                        </div>
-                        <div class="form-group">
-                            <label>Tanggal Terima <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="datepicker" name="tanggal_terima" placeholder="Tanggal Terima" value="{{ \Carbon\Carbon::parse($sm->tanggal_terima)->format('Y-m-d') }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
-                        </div>
-                        <div class="form-group">
-                            <label>Isi Disposisi KABAG <small>(KABAG)</small></label>
-                            <textarea type="text" class="form-control" name="idk" id="idk" placeholder="Isi Disposisi KABAG" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">{{ $sm->idk }}</textarea>
-                        </div>
-
                         <div class="form-group">
                             <label>Keterangan 1 <small>(KABAG)</small></label>
                             <textarea type="text" class="form-control" name="keterangan1" id="keterangan1" placeholder="Keterangan 1" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">{{ $sm->keterangan1 }}</textarea>
@@ -341,7 +344,7 @@
     Dropzone.options.dropzoneForm = {
         autoProcessQueue: false,
         acceptedFiles: ".pdf",
-        addRemoveLinks: true,
+        addRemoveLinks: false,
         parallelUploads: 5,
         dictDefaultMessage: "<strong>Drop files here or click to upload. </strong>",
         removedfile: function(file) {
@@ -428,7 +431,7 @@
                     },
                     success: function(response) {
                         if (myDropzone.getQueuedFiles().length == 0) {
-                            window.location.href = "{{ URL::to('suratmasuk ') }}";
+                            window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}";
                         } else {
                             myDropzone.processQueue();
                         }

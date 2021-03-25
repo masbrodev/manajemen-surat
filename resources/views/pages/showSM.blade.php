@@ -46,6 +46,14 @@
                                 <h6>: {{ $sm->nomor_agenda  }}</h6>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <h6>Sifat Surat </h6>
+                            </td>
+                            <td>
+                                <h6>: {{ $sm->sifat_surat  }}</h6>
+                            </td>
+                        </tr>
                     </table>
                     <h6>
                         <span class="mailbox-read-time float-right"> {{ \Carbon\Carbon::parse($sm->tanggal_terima)->isoFormat('D - MMMM - Y') }}</span>
@@ -73,7 +81,7 @@
                                             <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
 
                                             <div class="mailbox-attachment-info">
-                                                <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
+                                                <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" target="_blank" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
                                                 <span class="mailbox-attachment-size clearfix mt-1">
                                                     <span>file PDF </span>
                                                     <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" download="{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>

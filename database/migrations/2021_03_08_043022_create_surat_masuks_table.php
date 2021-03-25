@@ -21,7 +21,6 @@ class CreateSuratMasuksTable extends Migration
             $table->integer('nomor_agenda')->nullable();
             $table->string('sifat_surat')->nullable();
             $table->string('perihal');
-            $table->longText('idk')->nullable(); //ISI DISPOSISI KABAG	
             $table->longText('lajur_disposisi')->nullable();
             $table->longText('catatan')->nullable();
             $table->longText('keterangan1')->nullable();
