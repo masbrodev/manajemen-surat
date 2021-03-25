@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form id="form-tambah" action="{{ URL::to('suratmasuk/'. $id) }}">
+                        <form id="form-tambah" action="#">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">

@@ -18,8 +18,11 @@ class CreateSuratKeluarsTable extends Migration
             $table->date('tanggal_keluar');
             $table->string('tujuan_surat');
             $table->string('nomor_surat');
+            $table->integer('nomor_agenda');
             $table->string('perihal');
-            $table->string('keterangan');
+            $table->string('konseptor')->nullable();
+            $table->longText('keterangan')->nullable();
+            $table->longText('tindak_lanjut')->nullable();
             $table->timestamps();
         });
     }
