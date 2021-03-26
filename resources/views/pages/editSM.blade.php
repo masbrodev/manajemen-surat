@@ -328,18 +328,9 @@
 
 @section('adminlte_js')
 
+{!! Toastr::message() !!}
 
 <script>
-    // $('#datepicker').datepicker("set Date", new Date());
-    // $('#datepicker').datepicker({
-    //     format: "dd-mm-yyyy",
-    //     language: "id",
-    //     autoclose: true,
-    //     toggleActive: true,
-    //     todayHighlight: true
-    // });
-
-
 
     Dropzone.options.dropzoneForm = {
         autoProcessQueue: false,
@@ -457,6 +448,7 @@
                 console.log(file);
                 formData.append('bulan', $('#datepicker').val());
                 formData.append('id', '{{ $sm->id }}');
+                formData.append('type', 'surat_masuk');
 
             });
 

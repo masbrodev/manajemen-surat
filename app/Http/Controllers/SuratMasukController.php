@@ -91,11 +91,11 @@ class SuratMasukController extends Controller
 
         $bulan = Carbon::parse($request->bulan)->isoFormat('MMMM_Y');
 
-        $berkas->move('berkas/' . $bulan, $name);
+        $berkas->move('berkas/' . $request->type . '/' . $bulan, $name);
 
         Berkas::create([
             'nama_berkas' => $name,
-            'surat_type' => 'surat_masuk',
+            'surat_type' => $request->type,
             'surat_id' => $request->id,
             'lokasi' => $bulan
         ]);
@@ -111,7 +111,7 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        $data['sm'] = SuratMasuk::where('id', $id)->first();
+        $data['sm'] = SuratMasuk::findOrFail($id);
 
         $data['ss'] = ($data['sm']->sifat_surat == null) ? explode(",", "a") : explode(",", $data['sm']->sifat_surat);
         $data['lj'] = ($data['sm']->lajur_disposisi == null) ? explode(",", "a") : explode(",", $data['sm']->lajur_disposisi);
@@ -176,8 +176,8 @@ class SuratMasukController extends Controller
             $lokasi[] = $berkas['lokasi'];
         }
 
-        $f = 'berkas/' . $lokasi[0] . '/';
-        $storeFolder = public_path('berkas/' . $lokasi[0]);
+        $f = 'berkas/surat_masuk/' . $lokasi[0] . '/';
+        $storeFolder = public_path('berkas/surat_masuk/' . $lokasi[0]);
         $files = scandir($storeFolder);
 
         foreach ($files as $file) {
@@ -194,9 +194,8 @@ class SuratMasukController extends Controller
 
     public function del_berkas($id)
     {
-        // $filename =  $request->get('filename');
         $data = Berkas::where('id', $id)->first();
-        $path = public_path('berkas/') . $data->lokasi . '/' . $data->nama_berkas;
+        $path = public_path('berkas/surat_masuk/') . $data->lokasi . '/' . $data->nama_berkas;
 
         if (file_exists($path)) {
             $data->delete();
@@ -263,7 +262,7 @@ class SuratMasukController extends Controller
 
             // $data = Produk::with('foto_produk')->find($id);
             foreach ($data['db_berkas'] as $f) {
-                $path = public_path('berkas/') . $f->lokasi . '/' . $f->nama_berkas;
+                $path = public_path('berkas/surat_masuk/') . $f->lokasi . '/' . $f->nama_berkas;
                 unlink($path);
                 Berkas::where('surat_id', $f->surat_id)->delete();
 
@@ -272,7 +271,7 @@ class SuratMasukController extends Controller
             $hapus = $data['sm']->delete();
             if ($hapus) {
                 DB::commit();
-                return redirect('suratmasuk')->with([Toastr::warning('Data Surat Masuk Berhasil Dihapus')]);
+                return redirect('suratmasuk')->with([Toastr::success('Data Surat Masuk Berhasil Dihapus')]);
             }
         } catch (Exception $e) {
             DB::rollBack();

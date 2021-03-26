@@ -285,6 +285,7 @@
 @endsection
 
 @section('adminlte_js')
+
 {!! Toastr::message() !!}
 
 @endsection

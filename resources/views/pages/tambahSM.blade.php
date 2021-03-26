@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form id="form-tambah" action="#">
+                        <form id="form-tambah" action="javascript:$.LoadingOverlay('show');">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -376,11 +376,9 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     beforeSend: function() {
+                        myDropzone.processQueue();
                         $.LoadingOverlay("show");
                         // console.log(myDropzone.getAcceptedFiles().length);
-                    },
-                    success: function(response) {
-                        myDropzone.processQueue();
                     },
                     error: function(error) {
                         console.log(error);
@@ -402,6 +400,7 @@
             this.on('sending', function(file, xhr, formData) {
                 formData.append('id', '{{ $id }}');
                 formData.append('bulan', $('#datepicker').val());
+                formData.append('type', 'surat_masuk');
             });
 
             this.on('complete', function() {
