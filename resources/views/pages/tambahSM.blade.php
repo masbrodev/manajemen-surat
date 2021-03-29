@@ -74,7 +74,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Nomor Agenda <span class="text-danger">*</span></label>   <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
+                                        <label>Nomor Agenda <span class="text-danger">*</span></label> <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
                                         <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-sm-6">
@@ -380,6 +380,10 @@
                         $.LoadingOverlay("show");
                         // console.log(myDropzone.getAcceptedFiles().length);
                     },
+                    success: function() {
+                        $.LoadingOverlay("hide");
+                        window.location.href = "{{ URL::to('suratmasuk/'. $id) }}" + "?success=add";
+                    },
                     error: function(error) {
                         console.log(error);
                     }
@@ -388,12 +392,7 @@
 
             this.on("addedfile", function(file) {
                 if (!file.type.match(/image.*/)) {
-                    // This is not an image, so Dropzone doesn't create a thumbnail.
-                    // Set a default thumbnail:
                     myDropzone.emit("thumbnail", file, "/pdf.png");
-
-                    // You could of course generate another image yourself here,
-                    // and set it as a data url.
                 }
             });
 
@@ -408,7 +407,7 @@
                     var _this = this;
                     _this.removeAllFiles();
                     $.LoadingOverlay("hide");
-                    window.location.href = "{{ URL::to('suratmasuk/'. $id) }}";
+                    window.location.href = "{{ URL::to('suratmasuk/'. $id) }}" + "?success=add";
 
                 }
             });

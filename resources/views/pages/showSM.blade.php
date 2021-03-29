@@ -270,8 +270,8 @@
                 <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
                 <form action="{{ URL::route('suratmasuk.destroy', $sm->id) }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-outline-danger float-sm-right">Hapus</button>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button type="submit" class="btn btn-outline-danger float-sm-left">Hapus</button>
                     <!-- <button>Delete User</button> -->
                     <!-- <a href="{{ URL::to('suratmasuk//'.$sm->id) }}" class="btn btn-outline-danger float-sm-left">Hapus</a> -->
                 </form>
@@ -287,5 +287,21 @@
 @section('adminlte_js')
 
 {!! Toastr::message() !!}
+
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const success = urlParams.get('success')
+
+    if (success == 'update') {
+        toastr.success('Berhasil memperbarui data');
+        var newURL = location.href.split("?")[0];
+        window.history.pushState('object', document.title, newURL);
+    } else if (success == 'add') {
+        toastr.success('Berhasil menambah data');
+        var newURL = location.href.split("?")[0];
+        window.history.pushState('object', document.title, newURL);
+    }
+</script>
 
 @endsection

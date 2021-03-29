@@ -18,4 +18,9 @@ class SuratKeluar extends Model
         'tindak_lanjut',
         'keterangan',
     ];
+
+    public function berkas2()
+    {
+        return $this->hasMany(Berkas::class, 'surat_id', 'id');
+    }
 }

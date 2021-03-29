@@ -331,7 +331,6 @@
 {!! Toastr::message() !!}
 
 <script>
-
     Dropzone.options.dropzoneForm = {
         autoProcessQueue: false,
         acceptedFiles: ".pdf",
@@ -422,7 +421,7 @@
                     },
                     success: function(response) {
                         if (myDropzone.getQueuedFiles().length == 0) {
-                            window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}";
+                            window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}" + "?success=update";
                         } else {
                             myDropzone.processQueue();
                         }
@@ -457,7 +456,7 @@
                     var _this = this;
                     _this.getUploadingFiles();
                     $.LoadingOverlay("hide");
-                    window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}";
+                    window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}" + "?success=update";
                 }
             });
 

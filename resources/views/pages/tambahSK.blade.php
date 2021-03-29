@@ -25,7 +25,7 @@
                             @csrf
                         </form>
                         <br>
-                        <form id="form-tambah" action="{{ URL::to('suratkeluar/'. $id) }}">
+                        <form id="form-tambah" action="javascript:$.LoadingOverlay('show');">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -146,17 +146,6 @@
 
 
 <script>
-    // $('#datepicker').datepicker("setDate", new Date());
-    // $('#datepicker').datepicker({
-    //     format: "dd-mm-yyyy",
-    //     language: "id",
-    //     autoclose: true,
-    //     toggleActive: true,
-    //     todayHighlight: true
-    // });
-
-
-
     Dropzone.options.dropzoneForm = {
         autoProcessQueue: false,
         acceptedFiles: ".pdf",
@@ -166,15 +155,10 @@
             file.previewElement.remove();
         },
 
-        // accept: function(file) {
-        //     myDropzone.options.thumbnail.call(myDropzone, file, "/pdf.png");
-        // },
-
         init: function() {
             myDropzone = this;
             var tdl = [];
             console.log(tdl);
-            // tdl.push($(this).val());
             $('input[type="checkbox"]').on('change', function() {
                 $('input[type="checkbox"]').not(this).prop('checked', false);
                 tdl.push($(this).val());
@@ -200,10 +184,11 @@
                     },
                     beforeSend: function() {
                         $.LoadingOverlay("show");
-                        // console.log(myDropzone.getAcceptedFiles().length);
-                    },
-                    success: function(response) {
                         myDropzone.processQueue();
+                    },
+                    success: function() {
+                        $.LoadingOverlay("hide");
+                        window.location.href = "{{ URL::to('suratkeluar/'. $id) }}" + "?success=add";
                     },
                     error: function(error) {
                         console.log(error);
@@ -213,12 +198,7 @@
 
             this.on("addedfile", function(file) {
                 if (!file.type.match(/image.*/)) {
-                    // This is not an image, so Dropzone doesn't create a thumbnail.
-                    // Set a default thumbnail:
                     myDropzone.emit("thumbnail", file, "/pdf.png");
-
-                    // You could of course generate another image yourself here,
-                    // and set it as a data url.
                 }
             });
 
@@ -233,7 +213,7 @@
                     var _this = this;
                     _this.removeAllFiles();
                     $.LoadingOverlay("hide");
-                    window.location.href = "{{ URL::to('suratkeluar/'. $id) }}";
+                    window.location.href = "{{ URL::to('suratkeluar/'. $id) }}" + "?success=add";
 
                 }
             });

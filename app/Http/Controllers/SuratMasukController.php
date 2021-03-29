@@ -19,12 +19,10 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        // Toastr::success('Data Surat Masuk Berhasil Diperbaharui');
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
         }])->orderBy('id', 'DESC')->get();
         return view('pages.dataSM', $data);
-        // return $data;
     }
 
     /**
@@ -74,7 +72,7 @@ class SuratMasukController extends Controller
                 'keterangan2' => $request->keterangan2,
             ]);
 
-            return redirect('suratmasuk/' . $request->id_r)->with([Toastr::success('Data Surat Masuk Berhasil Ditambah')]);
+            return redirect('suratmasuk/' . $request->id_r);
         }
 
         // $simpan = SuratMasuk::create($data);
@@ -215,7 +213,6 @@ class SuratMasukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $date = Carbon::createFromFormat('d-m-Y', $request->tanggal_terima)->format('Y-m-d');
 
         $ss = ($request->sifat_surat == null) ? "" : implode(",", $request->sifat_surat);
         $lj = ($request->lajur_disposisi == null) ? "" : implode(",", $request->lajur_disposisi);
@@ -238,9 +235,9 @@ class SuratMasukController extends Controller
 
         $simpan = SuratMasuk::where('id', $id)->update($data);
         if ($simpan) {
-            return redirect()->back()->with([Toastr::success('Data Surat Masuk Berhasil Diperbaharui')]);
+            return redirect()->back();
         } else {
-            return redirect()->back()->with([Toastr::error('Data Surat Masuk Gagal Diperbaharui')]);
+            return redirect()->back();
         }
     }
 

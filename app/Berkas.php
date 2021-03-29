@@ -20,4 +20,9 @@ class Berkas extends Model
     {
         return $this->belongsTo(SuratMasuk::class, 'surat_id', 'id');
     }
+
+    public function berkas2()
+    {
+        return $this->belongsTo(SuratKeluar::class, 'surat_id', 'id');
+    }
 }
