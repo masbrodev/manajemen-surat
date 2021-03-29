@@ -29,18 +29,23 @@
                         </thead>
                         <tbody>
                             @foreach($sm as $r)
-                            <tr>
+                            <tr onClick="window.location.href='{{URL::to('suratmasuk/'.$r->id)}}'">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $r->asal_surat }}</td>
                                 <td>{{ $r->perihal }}</td>
                                 <td>{{ $r->nomor() .' | '. \Carbon\Carbon::parse($r->tanggal())->isoFormat('D-MMMM-Y')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($r->tanggal_terima)->isoFormat('D-MMMM-Y') }}</td>
                                 <td>
-                                    <div class="input-group">
+                                <div class="input-group">
                                         @if(count($r->berkas) == 0)
-                                        <a class="btn btn-sm btn-outline-danger" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="Berkas Tidak Ada">lihat</a>
+                                        <i class="fa fa-file" aria-hidden="true" style="color:red;"></i>&nbsp;
                                         @else
-                                        <a class="btn btn-sm btn-outline-success" href="{{URL::to('suratmasuk/'.$r->id)}}" data-toggle="tooltip" data-html="true" title="{{ count($r->berkas) }} Berkas">lihat</a>
+                                        <span class="badge badge-success">{{ count($r->berkas) }}</span>&nbsp;
+                                        @endif
+                                        @if($r->tindak_lanjut == 'Belum Proses')
+                                        <i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i>
+                                        @elseif($r->tindak_lanjut == 'Proses')
+                                        <i class="fa fa-check-square" aria-hidden="true" style="color:green;"></i>
                                         @endif
                                     </div>
                                 </td>
