@@ -276,10 +276,10 @@
                         <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
 
                         <div class="mailbox-attachment-info">
-                            <a href=" {{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
+                            <a href=" {{URL::to( 'berkas/surat_masuk/' . $b->lokasi .'/'. $b->nama_berkas)}}" target="_blank" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
                             <span class="mailbox-attachment-size clearfix mt-1">
                                 <span>Hapus File</span>
-                                <a href=" {{ URL::to('del_berkas/'.$b->id)}} " class="btn btn-outline-danger btn-sm float-right"><i class="fas fa-trash"></i></a>
+                                <a href=" {{ URL::to('del_berkas/surat_masuk/'.$b->id)}} " class="btn btn-outline-danger btn-sm float-right"><i class="fas fa-trash"></i></a>
                             </span>
                         </div>
                     </li>
