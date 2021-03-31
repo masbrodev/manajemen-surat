@@ -195,6 +195,7 @@
                     }
                 })
             });
+            
 
             this.on("addedfile", function(file) {
                 if (!file.type.match(/image.*/)) {
