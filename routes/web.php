@@ -23,20 +23,25 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-    'register' => false, // Registration Routes...
+    'register' => true, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::resource('suratmasuk', 'SuratMasukController');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
-Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
-Route::get('del_berkas/surat_masuk/{id}', 'SuratMasukController@del_berkas');
-Route::get('printsm/{id}', 'SuratMasukController@print');
+    Route::resource('suratmasuk', 'SuratMasukController');
 
-Route::resource('suratkeluar', 'SuratKeluarController');
-Route::get('get_berkas_sk/{id}', 'SuratKeluarController@get_berkas');
-Route::get('del_berkas/surat_keluar/{id}', 'SuratKeluarController@del_berkas_sk');
+    Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
+    Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
+    Route::get('del_berkas/surat_masuk/{id}', 'SuratMasukController@del_berkas');
+    Route::get('printsm/{id}', 'SuratMasukController@print');
+
+    Route::resource('suratkeluar', 'SuratKeluarController');
+    Route::get('get_berkas_sk/{id}', 'SuratKeluarController@get_berkas');
+    Route::get('del_berkas/surat_keluar/{id}', 'SuratKeluarController@del_berkas_sk');
+
+    Route::resource('profil', 'UserController');
+});
