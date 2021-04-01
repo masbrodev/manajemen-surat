@@ -24,7 +24,7 @@
                                 <th>Perihal</th>
                                 <th>Nomor | Tanggal</th>
                                 <th>Tanggal Terima</th>
-                                <th style="width: 200px">Aksi</th>
+                                <th style="width: 200px">Info</th>
                             </tr>
                         </thead>
                         <tbody>
