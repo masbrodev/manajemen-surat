@@ -16,21 +16,23 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover display nowrap table-sm" id="surat-keluar">
+                    <table class="table table-hover display" id="surat-keluar">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
+                                <th>NA.</th>
                                 <th>Tujuan Surat</th>
                                 <th>Perihal</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal</th>
-                                <th style="width: 200px">Info</th>
+                                <th>Info</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($sk as $r)
                             <tr onClick="window.location.href='{{URL::to('suratkeluar/'.$r->id)}}'">
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $r->nomor_agenda }}</td>
                                 <td>{{ $r->tujuan_surat }}</td>
                                 <td>{{ $r->perihal }}</td>
                                 <td>{{ $r->nomor_surat}}</td>

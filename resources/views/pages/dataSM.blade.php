@@ -20,17 +20,19 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
+                                <th>NA.</th>
                                 <th>Asal Surat</th>
                                 <th>Perihal</th>
                                 <th>Nomor | Tanggal</th>
                                 <th>Tanggal Terima</th>
-                                <th style="width: 200px">Aksi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($sm as $r)
                             <tr onClick="window.location.href='{{URL::to('suratmasuk/'.$r->id)}}'">
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $r->nomor_agenda }}</td>
                                 <td>{{ $r->asal_surat }}</td>
                                 <td>{{ $r->perihal }}</td>
                                 <td>{{ $r->nomor() .' | '. \Carbon\Carbon::parse($r->tanggal())->isoFormat('D-MMMM-Y')}}</td>
