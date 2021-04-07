@@ -27,9 +27,9 @@ class KategoriSeeder extends Seeder
         }
 
         $faker = Faker\Factory::create('id_ID');
-        for ($i = 1; $i <= 500; $i++) {
+        for ($i = 1; $i <= 5000; $i++) {
             SuratMasuk::insert([
-                'tanggal_terima' => $faker->date($startDate = '-30 years', $endDate = 'now', $format = 'Y-m-d', $timezone = null),
+                'tanggal_terima' => 2020 . '-' . $faker->date($format = 'm-d', $max = 'now'),
                 'asal_surat' => $faker->text($maxNbChars = 200),
                 'nomor_agenda' => $faker->numberBetween($min = 1, $max = 9000),
                 'nomor_surat' => $faker->ipv4 . '_tgl_' . $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -38,6 +38,24 @@ class KategoriSeeder extends Seeder
                 'sifat_surat' => $faker->valid()->randomElement($array = array(
                     'Rahasia',
                     'Biasa',
+                )),
+                'tindak_lanjut' => $faker->valid()->randomElement($array = array(
+                    'Proses',
+                    'Belum Proses',
+                )),
+            ]);
+
+            SuratKeluar::insert([
+                'tanggal_keluar' => 2020 . '-' . $faker->date($format = 'm-d', $max = 'now'),
+                'tujuan_surat' => $faker->text($maxNbChars = 200),
+                'nomor_agenda' => $faker->numberBetween($min = 1, $max = 9000),
+                'nomor_surat' => $faker->ipv4 . '_tgl_' . $faker->date($format = 'Y-m-d', $max = 'now'),
+                'perihal' => $faker->text($maxNbChars = 200),
+                'konseptor' => $faker->name,
+
+                'tindak_lanjut' => $faker->valid()->randomElement($array = array(
+                    'Tuntas',
+                    'Belum Tuntas',
                 )),
             ]);
         }
