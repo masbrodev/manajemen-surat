@@ -25,7 +25,7 @@
                                 <th>Perihal</th>
                                 <th>Nomor | Tanggal</th>
                                 <th>Tanggal Terima</th>
-                                <th>Aksi</th>
+                                <th class="notexport">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,7 @@
                                 <td>{{ $r->nomor() .' | '. \Carbon\Carbon::parse($r->tanggal())->isoFormat('D-MMMM-Y')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($r->tanggal_terima)->isoFormat('D-MMMM-Y') }}</td>
                                 <td>
-                                <div class="input-group">
+                                    <div class="input-group">
                                         @if(count($r->berkas) == 0)
                                         <i class="fa fa-file" aria-hidden="true" style="color:red;"></i>&nbsp;
                                         @else
@@ -67,6 +67,7 @@
 
 @section('adminlte_js')
 {!! Toastr::message() !!}
+
 <script>
     $(function() {
         $("#surat-masuk").DataTable({
@@ -79,8 +80,14 @@
                 infoEmpty: 'Data Kosong',
                 infoFiltered: '(filtered from _MAX_ total records)'
             },
-            "responsive": true,
-            "autoWidth": false,
+            dom: 'Bfrtip',
+            buttons: [{
+                extend: 'excel',
+                text: 'Export',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }]
         });
     });
 </script>

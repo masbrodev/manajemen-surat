@@ -25,7 +25,7 @@
                                 <th>Perihal</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal</th>
-                                <th>Info</th>
+                                <th class="notexport">Info</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +81,14 @@
             },
             "responsive": true,
             "autoWidth": false,
+            dom: 'Bfrtip',
+            buttons: [{
+                extend: 'excel',
+                text: 'Export',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }]
         });
     });
 </script>

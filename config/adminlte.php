@@ -317,9 +317,29 @@ return [
                     'location' => 'vendor/datatables/bootstrap4.min.js',
                 ],
                 [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/dataTables.buttons.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/jszip.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/buttons.html5.min.js',
+                ],
+                [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/datatables/bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css',
                 ],
             ],
         ],
