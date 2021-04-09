@@ -35,14 +35,8 @@ class HomeController extends Controller
         $data['ts'] = $data['sm'] + $data['sk'];
         $data['bk'] = Berkas::count();
 
-
         $data['lb'] = ['Surat Masuk', 'Surat Keluar'];
         $data['dt'] = [$data['sm'], $data['sk']];
-
-
-        $data['ds'] = [489, 378];
-
-
 
         $year = [1,2,3,4,5,6,7,8,9,10,11,12];
 
@@ -54,27 +48,26 @@ class HomeController extends Controller
             $data['dtk'][] = SuratKeluar::where(SuratKeluar::raw("DATE_FORMAT(tanggal_keluar, '%m')"),$value)->count();
         }
 
-        $ssm = SuratMasuk::with(['berkas' => function ($q) {
+        $data['ssm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
         }])->orderBy('id', 'DESC')->take(3)->get();
 
-        $ssk = SuratKeluar::with(['berkas2' => function ($q) {
+        $data['ssk'] = SuratKeluar::with(['berkas2' => function ($q) {
             $q->where('surat_type', 'surat_keluar');
         }])->orderBy('id', 'DESC')->take(3)->get();
 
-        $data['dtsa'] = Arr::collapse([$ssm,$ssk]);
-        // // $o = collect($data['dtsa'])->sortBy('id')->take(10);
+        // $data['dtsa'] = Arr::collapse([$ssm,$ssk]);
+        // $o = collect($data['dtsa'])->sortBy('id')->take(5);
 
         // $data['aa'] = collect();
 
-        // foreach ($data['dtsa']->sortBy('id') as $o){
+        // foreach ($data['dtsa'] as $o){
         //     $data['aa']->push([
         //         'id' => $o->id,
         //     ]);
 
         // }
 
-    	// return view('home')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('dtm',json_encode($data['dtm'],JSON_NUMERIC_CHECK));
         return view('home', $data);
         // return $data['aa'];
     }

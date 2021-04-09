@@ -98,14 +98,30 @@
                 </div>
                 <div class="card-body p-0">
                     <ul class="products-list product-list-in-card pl-2 pr-2">
-                    @foreach($dtsa as $d)
+                    @foreach($ssm as $d)
                         <li class="item">
                             <div class="product-img">
-                                <img src="pdf.png" alt="Product Image" class="img-size-50">
+                                <a href="{{ URL::to('suratmasuk/'.$d->id)}}"><img src="pdf.png" alt="Product Image" class="img-size-50"></a>
                             </div>
                             <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">{{ Str::limit($d->asal_surat . $d->tujuan_surat, 30) }}
-                                    <span class="badge badge-warning float-right">{{ $d->nomor_agenda }}</span></a>
+                                <a href="{{ URL::to('suratmasuk/'.$d->id)}}" class="product-title">{{ Str::limit($d->asal_surat, 30) }}
+                                    <span class="badge badge-success float-right">Surat Masuk</span></a>
+                                    <span class="badge badge-primary float-right">{{ $d->nomor_agenda }}</span></a>
+                                <span class="product-description">
+                                {{ Str::limit($d->perihal, 60) }}
+                                </span>
+                            </div>
+                        </li>
+                        @endforeach
+                        @foreach($ssk as $d)
+                        <li class="item">
+                            <div class="product-img">
+                                <a href="{{ URL::to('suratkeluar/'.$d->id)}}"><img src="pdf.png" alt="Product Image" class="img-size-50"></a>
+                            </div>
+                            <div class="product-info">
+                                <a href="{{ URL::to('suratkeluar/'.$d->id)}}" class="product-title">{{ Str::limit($d->tujuan_surat, 30) }}
+                                    <span class="badge badge-danger float-right">Surat Keluar</span></a>
+                                    <span class="badge badge-primary float-right">{{ $d->nomor_agenda }}</span></a>
                                 <span class="product-description">
                                 {{ Str::limit($d->perihal, 60) }}
                                 </span>
@@ -149,7 +165,7 @@
 <script>
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var dlb = @json($lb);
-    var ddt = @json($ds);
+    var ddt = @json($dt);
     var ddtm = @json($dtm);
     var ddtk = @json($dtk);
 
