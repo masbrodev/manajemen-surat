@@ -174,7 +174,7 @@
             border: 0;
             padding: 0;
             margin: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
             display: block
         }
 
@@ -470,6 +470,10 @@
 
         ._5 {
             width: 269.619200px;
+        }
+
+        ._77 {
+            width: 330.619200px;
         }
 
         ._0 {
@@ -1412,9 +1416,9 @@
  Copyright 2013 Lu Wang <coolwanglu@gmail.com>
  Apachine License Version 2.0 
 */
-        window.onload = function() {
-                window.print();
-            }
+        // window.onload = function() {
+        //         window.print();
+        //     }
             (function() {
                 function b(a, b, e, f) {
                     var c = (a.className || "").split(/\s+/g);
@@ -1947,7 +1951,7 @@
                     <div class="t m0 x6 h5 y9 ff1 fs2 fc0 sc0 ls0 ws0">: {{ $sm->asal_surat }}</div>
                 </div>
                 <div class="c x1 ya w2 h7">
-                    <div class="t m0 x3 h6 yb ff1 fs3 fc0 sc0 ls0 ws0">Hal<span class="_ _5"> </span><span class="fs2">:</span> {{ $sm->perihal }}</div>
+                    <div class="t m0 x3 h6 yb ff1 fs3 fc0 sc0 ls0 ws0">Hal<span class="_ _5"> </span><span class="fs2">:</span> {!! wordwrap($sm->perihal, 100, '<br/> <span class="_ _77"></span>', true) !!}</div>
                 </div>
                 <div class="c x1 y1 w2 h2">
                     <div class="t m0 x7 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Untuk diselesaikan</div>
