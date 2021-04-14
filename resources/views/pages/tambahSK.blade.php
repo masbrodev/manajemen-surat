@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Nomor Agenda <span class="text-danger">*</span></label> <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
-                                        <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                        <input type="text" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Konseptor<span class="text-danger">*</span></label>
@@ -63,8 +63,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Keterangan</label>
-                                <textarea type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"></textarea>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Keterangan</label>
+                                        <textarea type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <label>Tindak Lanjut Staf</label>
+                                        <textarea type="text" class="form-control" name="tls" id="tls" placeholder="Tindak Lanjut Staf"></textarea>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -176,6 +184,7 @@
                         'perihal': $('#perihal').val(),
                         'keterangan': $('#keterangan').val(),
                         'konseptor': $('#konseptor').val(),
+                        'tls': $('#tls').val(),
                         'tindak_lanjut': tdl,
                         'id_r': '{{$id}}',
                     },
@@ -195,7 +204,7 @@
                     }
                 })
             });
-            
+
 
             this.on("addedfile", function(file) {
                 if (!file.type.match(/image.*/)) {

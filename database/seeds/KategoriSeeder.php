@@ -27,7 +27,7 @@ class KategoriSeeder extends Seeder
         }
 
         $faker = Faker\Factory::create('id_ID');
-        for ($i = 1; $i <= 5000; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             SuratMasuk::insert([
                 'tanggal_terima' => 2020 . '-' . $faker->date($format = 'm-d', $max = 'now'),
                 'asal_surat' => $faker->text($maxNbChars = 200),

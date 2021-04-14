@@ -17,6 +17,7 @@ class SuratKeluar extends Model
         'konseptor',
         'tindak_lanjut',
         'keterangan',
+        'tls',
     ];
 
     public function berkas2()

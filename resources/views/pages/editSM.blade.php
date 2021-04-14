@@ -87,11 +87,11 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>Nomor Surat <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" value="{{ $sm->nomor() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" value="{{ $sm->nomor() }}">
                                 </div>
                                 <div class="col-sm-6">
                                     <label>Tanggal Surat<span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" value="{{ $sm->tanggal() }}" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                    <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" value="{{ $sm->tanggal() }}">
                                 </div>
                             </div>
                         </div>
@@ -205,6 +205,7 @@
                                                 <label for="lj16" class="custom-control-label">Arsip/File</label>
                                             </div>
                                         </div>
+                                        <br>
 
                                     </div>
                                 </div>
@@ -244,6 +245,15 @@
                                                 <input {{ in_array("Belum Proses", $tdl) ? "checked" : "" }} class="custom-control-input" type="checkbox" name="tindak_lanjut[]" id="tdl2" value="Belum Proses">
                                                 <label for="tdl2" class="custom-control-label">Belum Proses</label>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4>Tindak Lanjut Staf</h4>
+                                        <hr>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="tls" name="tls" value="{{ $sm->tls }}" placeholder="Tindak Lanjut Staf">
                                         </div>
                                     </div>
                                 </div>
@@ -404,6 +414,7 @@
                         'idk': $('#idk').val(),
                         'keterangan1': $('#keterangan1').val(),
                         'keterangan2': $('#keterangan2').val(),
+                        'tls': $('#tls').val(),
                         'sifat_surat': ss,
                         'lajur_disposisi': lj,
                         'catatan': ct,

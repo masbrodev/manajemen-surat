@@ -25,6 +25,7 @@ class CreateSuratMasuksTable extends Migration
             $table->longText('catatan')->nullable();
             $table->longText('keterangan1')->nullable();
             $table->longText('keterangan2')->nullable();
+            $table->longText('tls')->nullable(); //Tindak Lanjut Staf
             $table->longText('tindak_lanjut')->nullable();
             $table->timestamps();
         });
