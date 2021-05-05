@@ -26,6 +26,7 @@
                                 <th>Nomor | Tanggal</th>
                                 <th>Tanggal Terima</th>
                                 <th class="notexport">Aksi</th>
+
                             </tr>
                         </thead>
                         <tbody>

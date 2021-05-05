@@ -81,10 +81,10 @@
                                             <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
 
                                             <div class="mailbox-attachment-info">
-                                                <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" target="_blank" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
+                                                <a href="{{URL::to( 'berkas/surat_masuk/' . $b->lokasi .'/'. $b->nama_berkas)}}" target="_blank" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}</a>
                                                 <span class="mailbox-attachment-size clearfix mt-1">
                                                     <span>file PDF </span>
-                                                    <a href="{{URL::to( 'berkas/' . $b->lokasi .'/'. $b->nama_berkas)}}" download="{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
+                                                    <a href="{{URL::to( 'berkas/surat_masuk/' . $b->lokasi .'/'. $b->nama_berkas)}}" download="{{ Str::of($b->nama_berkas)->afterLast('_ks_')}}" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
                                                 </span>
                                             </div>
                                         </li>
