@@ -100,6 +100,6 @@ class HomeController extends Controller
             $q->where('surat_type', 'surat_keluar');
         }])->orderBy('id', 'DESC')->take(3)->get();
 
-        return $data
+        return $data;
     }
 }
