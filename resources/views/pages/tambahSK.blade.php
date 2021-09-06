@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Nomor Agenda <span class="text-danger">*</span></label> <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
-                                        <input type="text" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                        <input type="text" class="form-control" name="nomor_agenda" id="nomor_agenda" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Konseptor<span class="text-danger">*</span></label>
