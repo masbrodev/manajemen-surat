@@ -22,6 +22,7 @@ class SuratMasuk extends Model
         'nomor_agenda',
         'sifat_surat',
         'tindak_lanjut',
+        'tls',
     ];
 
     public function berkas()

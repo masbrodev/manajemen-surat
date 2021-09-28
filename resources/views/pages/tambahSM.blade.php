@@ -75,7 +75,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Nomor Agenda <span class="text-danger">*</span></label> <small class="text-muted">(nomor sebelumnya {{ $na }})</small>
-                                        <input type="number" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                        <input type="text" class="form-control" name="nomor_agenda" id="nomor_agenda" value="{{ $na + 1}}" placeholder="Nomor Agenda" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Tanggal Terima <span class="text-danger">*</span></label>
@@ -87,11 +87,11 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Nomor Surat <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                        <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" placeholder="Nomor Surat">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Tanggal Surat<span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal" oninvalid="this.setCustomValidity('Lengkapi Inputan')" required="" oninput="setCustomValidity('')">
+                                        <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -206,6 +206,7 @@
                                                     <label for="lj16" class="custom-control-label">Arsip/File</label>
                                                 </div>
                                             </div>
+                                            <br>
 
                                         </div>
                                     </div>
@@ -245,6 +246,15 @@
                                                     <input class="custom-control-input" type="checkbox" name="tindak_lanjut[]" id="tdl2" value="Belum Proses">
                                                     <label for="tdl2" class="custom-control-label">Belum Proses</label>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4>Tindak Lanjut Staf</h4>
+                                            <hr>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="tls" name="tls" placeholder="Tindak Lanjut Staf">
                                             </div>
                                         </div>
                                     </div>
@@ -366,6 +376,7 @@
                         'idk': $('#idk').val(),
                         'keterangan1': $('#keterangan1').val(),
                         'keterangan2': $('#keterangan2').val(),
+                        'tls': $('#tls').val(),
                         'sifat_surat': ss,
                         'lajur_disposisi': lj,
                         'catatan': ct,

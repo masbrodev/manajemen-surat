@@ -234,6 +234,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="text-center">Tindak Lanjut Staf</h4>
+                                    <hr>
+                                    <div class="form-group">
+                                        <h4>{{ $sm->tls }}</h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

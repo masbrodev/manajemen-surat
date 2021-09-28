@@ -21,7 +21,7 @@ class SuratMasukController extends Controller
     {
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
-        }])->orderBy('id', 'DESC')->get();
+        }])->orderBy('nomor_agenda', 'DESC')->get();
         return view('pages.dataSM', $data);
     }
 
@@ -70,6 +70,7 @@ class SuratMasukController extends Controller
                 'tindak_lanjut' => $tdl,
                 'keterangan1' => $request->keterangan1,
                 'keterangan2' => $request->keterangan2,
+                'tls' => $request->tls,
             ]);
 
             return redirect('suratmasuk/' . $request->id_r);
@@ -231,6 +232,7 @@ class SuratMasukController extends Controller
             'tindak_lanjut' => $tdl,
             'keterangan1' => $request->keterangan1,
             'keterangan2' => $request->keterangan2,
+            'tls' => $request->tls,
         ];
 
         $simpan = SuratMasuk::where('id', $id)->update($data);

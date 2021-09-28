@@ -104,6 +104,17 @@
                                 </div>
                             </div>
 
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="text-center">Tindak Lanjut Staf</h4>
+                                    <hr>
+                                    <div class="form-group">
+                                        <p>Tindak Lanjut Staf : {{ $sk->tls }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <!-- /.mailbox-read-message -->
