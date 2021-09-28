@@ -467,7 +467,6 @@
                     var _this = this;
                     _this.getUploadingFiles();
                     $.LoadingOverlay("hide");
-                    window.location.href = "{{ URL::to('suratmasuk/'.$sm->id) }}" + "?success=update";
                 }
             });
 
