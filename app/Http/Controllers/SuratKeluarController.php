@@ -20,7 +20,7 @@ class SuratKeluarController extends Controller
     {
         $data['sk'] = SuratKeluar::with(['berkas2' => function ($q) {
             $q->where('surat_type', 'surat_keluar');
-        }])->orderBy('nomor_agenda', 'DESC')->get();
+        }])->orderBy('created_at', 'DESC')->get();
         return view('pages.dataSK', $data);
         // return $data;
     }

@@ -21,7 +21,7 @@ class SuratMasukController extends Controller
     {
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
-        }])->orderBy('nomor_agenda', 'DESC')->get();
+        }])->orderBy('created_at', 'DESC')->get();
         return view('pages.dataSM', $data);
     }
 
