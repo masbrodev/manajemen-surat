@@ -148,7 +148,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
-                <form action="{{ URL::to('suratkeluar/', $sk->id) }}" method="POST">
+                <form action="{{ URL::route('suratkeluar.destroy', $sk->id) }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="btn btn-outline-danger float-sm-left">Hapus</button>
