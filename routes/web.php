@@ -40,11 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('printsm/{id}', 'SuratMasukController@print');
 
     Route::resource('suratkeluar', 'SuratKeluarController', [
-        'only' => ['create','update','destroy','store']
+        'only' => ['create','destroy','store']
     ]);
     Route::get('suratkeluar', 'SuratKeluarController@index');
     Route::get('suratkeluar/{id}', 'SuratKeluarController@show');
-    Route::get('suratkeluar/{id}/edit', 'SuratKeluarController@edit');
+    Route::get('suratkeluar/{id}/edit',  'SuratKeluarController@edit');
+    Route::post('suratkeluar/update/{id}',  'SuratKeluarController@update');
 
     Route::get('get_berkas_sk/{id}', 'SuratKeluarController@get_berkas');
     Route::get('del_berkas/surat_keluar/{id}', 'SuratKeluarController@del_berkas_sk');
