@@ -39,13 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('del_berkas/surat_masuk/{id}', 'SuratMasukController@del_berkas');
     Route::get('printsm/{id}', 'SuratMasukController@print');
 
+    Route::resource('suratkeluar', 'SuratKeluarController', [
+        'only' => ['create','update','destroy']
+    ]);
     Route::get('suratkeluar', 'SuratKeluarController@index');
     Route::get('suratkeluar/{id}', 'SuratKeluarController@show');
     Route::get('suratkeluar/{id}/edit', 'SuratKeluarController@edit');
-    Route::put('suratkeluar/{id}', 'SuratKeluarController@update');
-    Route::get('suratkeluar/create', 'SuratKeluarController@create');
     Route::post('suratkeluar/store', 'SuratKeluarController@store');
-    Route::delete('suratkeluar/{id}', 'SuratKeluarController@destroy');
 
     Route::get('get_berkas_sk/{id}', 'SuratKeluarController@get_berkas');
     Route::get('del_berkas/surat_keluar/{id}', 'SuratKeluarController@del_berkas_sk');
