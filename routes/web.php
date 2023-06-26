@@ -32,7 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('suratmasuk', 'SuratMasukController');
+    Route::resource('suratmasuk', 'SuratMasukController',[
+        'only' => ['create','store']
+    ]);
+    Route::get('suratmasuk', 'SuratMasukController@index');
+    Route::get('suratmasuk/{id}', 'SuratMasukController@show');
+    Route::get('suratmasuk/{id}/edit',  'SuratMasukController@edit');
+    Route::post('suratmasuk/update/{id}',  'SuratMasukController@update');
+    Route::delete('suratmasuk/destroy/{id}',  'SuratMasukController@destroy');
+
 
     Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
     Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
@@ -42,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('suratkeluar', 'SuratKeluarController', [
         'only' => ['create','store']
     ]);
+
     Route::get('suratkeluar', 'SuratKeluarController@index');
     Route::get('suratkeluar/{id}', 'SuratKeluarController@show');
     Route::get('suratkeluar/{id}/edit',  'SuratKeluarController@edit');

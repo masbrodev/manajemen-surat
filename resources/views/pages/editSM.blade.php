@@ -402,7 +402,7 @@
 
                 $.ajax({
                     async: true,
-                    url: "{{ route('suratmasuk.update', $sm->id ) }}",
+                    url: "{{ URL::to('suratmasuk/update', $sm->id ) }}",
                     method: 'POST',
                     data: {
                         'tanggal_terima': $('#datepicker').val(),
@@ -419,7 +419,7 @@
                         'lajur_disposisi': lj,
                         'catatan': ct,
                         'tindak_lanjut': tdl,
-                        '_method': 'PUT',
+                        '_method': 'POST',
                         '_token': '{{ csrf_token() }}'
                     },
                     headers: {
