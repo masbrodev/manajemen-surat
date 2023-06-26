@@ -110,7 +110,7 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        $data['sm'] = SuratMasuk::findOrFail($id);
+        $data['sm'] = SuratMasuk::Where('id',$id)->first();
 
         $data['ss'] = ($data['sm']->sifat_surat == null) ? explode(",", "a") : explode(",", $data['sm']->sifat_surat);
         $data['lj'] = ($data['sm']->lajur_disposisi == null) ? explode(",", "a") : explode(",", $data['sm']->lajur_disposisi);

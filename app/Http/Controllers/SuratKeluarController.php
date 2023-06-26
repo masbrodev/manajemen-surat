@@ -76,7 +76,7 @@ class SuratKeluarController extends Controller
      */
     public function show($id)
     {
-        $data['sk'] = SuratKeluar::findOrFail($id);
+        $data['sk'] = SuratKeluar::Where('id',$id)->first();
 
         $data['berkas'] = Berkas::where('surat_id', $data['sk']->id)->where('surat_type', 'surat_keluar')->get();
 
