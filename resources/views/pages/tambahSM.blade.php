@@ -205,6 +205,37 @@
                                                     <input class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj16" value="Arsip/File">
                                                     <label for="lj16" class="custom-control-label">Arsip/File</label>
                                                 </div>
+                                                <hr>
+                                                <h4>Kelompok Kerja Fungsional</h4>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj17" value="Penyusunan">
+                                                    <label for="lj17" class="custom-control-label">Penyusunan Kebijakan, Rencana, Program Evaluasi dan Pelaporan</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj18" value="Arsip/File">
+                                                    <label for="lj18" class="custom-control-label">Pengelolaan Keuangan dan BMN</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj19" value="Arsip/File">
+                                                    <label for="lj19" class="custom-control-label">Pembina Hukum, Organisasi Tata Laksana, Reformasi Birokrasi dan Sistem Pengendalian Intern</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj20" value="Arsip/File">
+                                                    <label for="lj20" class="custom-control-label">Pengelolaan Urusan Kepegawaian</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj21" value="Arsip/File">
+                                                    <label for="lj21" class="custom-control-label">Pengelolaan Persuratan dan Kearsipan</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj22" value="Arsip/File">
+                                                    <label for="lj22" class="custom-control-label">Pemantauan Evaluasi dan Analisis Tindak Lanjut</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj23" value="Arsip/File">
+                                                    <label for="lj23" class="custom-control-label">PPK..................................</label>
+                                                </div>
                                             </div>
                                             <br>
 
@@ -220,8 +251,8 @@
                                             <hr>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG ATLHP">
-                                                    <label for="ct1" class="custom-control-label">KASUBAG ATLHP</label>
+                                                    <input class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG TLHP">
+                                                    <label for="ct1" class="custom-control-label">KASUBAG TLHP</label>
                                                 </div>
 
                                                 <div class="custom-control custom-checkbox">
