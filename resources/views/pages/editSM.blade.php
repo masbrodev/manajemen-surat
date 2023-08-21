@@ -219,8 +219,8 @@
                                         <hr>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input {{ in_array("KASUBAG ATLHP", $ct) ? "checked" : "" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG ATLHP">
-                                                <label for="ct1" class="custom-control-label">KASUBAG ATLHP</label>
+                                                <input {{ in_array("KASUBAG TLHP", $ct) ? "checked" : "" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG TLHP">
+                                                <label for="ct1" class="custom-control-label">KASUBAG TLHP</label>
                                             </div>
 
                                             <div class="custom-control custom-checkbox">
