@@ -210,23 +210,35 @@
                                                 <hr>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj17" value="Penyusunan">
-                                                    <label for="lj17" class="custom-control-label">Penyusunan Kebijakan, Rencana, Program Evaluasi dan Pelaporan</label>
+                                                    <label for="lj17" class="custom-control-label">PPK 1</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj18" value="Arsip/File">
-                                                    <label for="lj18" class="custom-control-label">Pengelolaan Keuangan dan BMN</label>
+                                                    <label for="lj18" class="custom-control-label">PPK 2</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj19" value="Arsip/File">
-                                                    <label for="lj19" class="custom-control-label">Pembina Hukum, Organisasi Tata Laksana, Reformasi Birokrasi dan Sistem Pengendalian Intern</label>
+                                                    <label for="lj19" class="custom-control-label">Bendahara Gaji</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj20" value="Arsip/File">
-                                                    <label for="lj20" class="custom-control-label">Pengelolaan Urusan Kepegawaian</label>
+                                                    <label for="lj20" class="custom-control-label">Bendahara Pengeluaran</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj21" value="Arsip/File">
-                                                    <label for="lj21" class="custom-control-label">Pengelolaan Persuratan dan Kearsipan</label>
+                                                    <label for="lj21" class="custom-control-label">Pengelolaan Keuangan dan BMN</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj22" value="Arsip/File">
+                                                    <label for="lj22" class="custom-control-label">Pengelolaan Urusan Kepegawaian</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj22" value="Arsip/File">
+                                                    <label for="lj22" class="custom-control-label">Pembina Hukum¸ ORTALA¸ RB dan SPI</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj22" value="Arsip/File">
+                                                    <label for="lj22" class="custom-control-label">Pengelolaan Persuratan dan Kearsipan</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj22" value="Arsip/File">
@@ -234,7 +246,7 @@
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input disabled class="custom-control-input" type="checkbox" name="lajur_disposisi[]" id="lj23" value="Arsip/File">
-                                                    <label for="lj23" class="custom-control-label">PPK..................................</label>
+                                                    <label for="lj23" class="custom-control-label">Penyusunan Kebijakan¸ Rencana¸ Program Evaluasi dan Pelaporan</label>
                                                 </div>
                                             </div>
                                             <br>
