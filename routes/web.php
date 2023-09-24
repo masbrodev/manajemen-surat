@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
     Route::get('del_berkas/surat_masuk/{id}', 'SuratMasukController@del_berkas');
     Route::get('printsm/{id}', 'SuratMasukController@print');
+    Route::get('printsmlama/{id}', 'SuratMasukController@printlama');
 
     Route::resource('suratkeluar', 'SuratKeluarController', [
         'only' => ['create','store']
