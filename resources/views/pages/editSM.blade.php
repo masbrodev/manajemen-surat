@@ -219,8 +219,8 @@
                                         <hr>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input {{ in_array("KASUBAG ATLHP", $ct) ? "checked" : "" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG ATLHP">
-                                                <label for="ct1" class="custom-control-label">KASUBAG ATLHP</label>
+                                                <input {{ in_array("KASUBAG TLHP", $ct) ? "checked" : "" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG TLHP">
+                                                <label for="ct1" class="custom-control-label">KASUBAG TLHP</label>
                                             </div>
 
                                             <div class="custom-control custom-checkbox">
@@ -402,7 +402,7 @@
 
                 $.ajax({
                     async: true,
-                    url: "{{ route('suratmasuk.update', $sm->id ) }}",
+                    url: "{{ URL::to('suratmasuk/update', $sm->id ) }}",
                     method: 'POST',
                     data: {
                         'tanggal_terima': $('#datepicker').val(),
@@ -419,7 +419,7 @@
                         'lajur_disposisi': lj,
                         'catatan': ct,
                         'tindak_lanjut': tdl,
-                        '_method': 'PUT',
+                        '_method': 'POST',
                         '_token': '{{ csrf_token() }}'
                     },
                     headers: {

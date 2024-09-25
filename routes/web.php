@@ -32,14 +32,32 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('suratmasuk', 'SuratMasukController');
+    Route::resource('suratmasuk', 'SuratMasukController',[
+        'only' => ['create','store']
+    ]);
+    Route::get('suratmasuk', 'SuratMasukController@index');
+    Route::get('suratmasuk/{id}', 'SuratMasukController@show');
+    Route::get('suratmasuk/{id}/edit',  'SuratMasukController@edit');
+    Route::post('suratmasuk/update/{id}',  'SuratMasukController@update');
+    Route::delete('suratmasuk/destroy/{id}',  'SuratMasukController@destroy');
+
 
     Route::post('upload_berkas', 'SuratMasukController@upload_berkas');
     Route::get('get_berkas/{id}', 'SuratMasukController@get_berkas');
     Route::get('del_berkas/surat_masuk/{id}', 'SuratMasukController@del_berkas');
     Route::get('printsm/{id}', 'SuratMasukController@print');
+    Route::get('printsmlama/{id}', 'SuratMasukController@printlama');
 
-    Route::resource('suratkeluar', 'SuratKeluarController');
+    Route::resource('suratkeluar', 'SuratKeluarController', [
+        'only' => ['create','store']
+    ]);
+
+    Route::get('suratkeluar', 'SuratKeluarController@index');
+    Route::get('suratkeluar/{id}', 'SuratKeluarController@show');
+    Route::get('suratkeluar/{id}/edit',  'SuratKeluarController@edit');
+    Route::post('suratkeluar/update/{id}',  'SuratKeluarController@update');
+    Route::delete('suratkeluar/destroy/{id}',  'SuratKeluarController@destroy');
+
     Route::get('get_berkas_sk/{id}', 'SuratKeluarController@get_berkas');
     Route::get('del_berkas/surat_keluar/{id}', 'SuratKeluarController@del_berkas_sk');
 

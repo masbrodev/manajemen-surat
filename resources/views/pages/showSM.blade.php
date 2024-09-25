@@ -205,8 +205,8 @@
                                     <hr>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input {{ in_array("KASUBAG ATLHP", $ct) ? "checked" : "disabled" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG ATLHP">
-                                            <label for="ct1" class="custom-control-label">KASUBAG ATLHP</label>
+                                            <input {{ in_array("KASUBAG TLHP", $ct) ? "checked" : "disabled" }} class="custom-control-input" type="checkbox" name="catatan[]" id="ct1" value="KASUBAG TLHP">
+                                            <label for="ct1" class="custom-control-label">KASUBAG TLHP</label>
                                         </div>
 
                                         <div class="custom-control custom-checkbox">
@@ -278,7 +278,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
-                <form action="{{ URL::route('suratmasuk.destroy', $sm->id) }}" method="POST">
+                <form action="{{ URL::to('suratmasuk/destroy', $sm->id) }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-outline-danger float-sm-right">Hapus</button>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

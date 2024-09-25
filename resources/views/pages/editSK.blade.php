@@ -237,7 +237,7 @@
 
                 $.ajax({
                     async: true,
-                    url: "{{ route('suratkeluar.update', $sk->id ) }}",
+                    url: "{{ URL::to('suratkeluar/update', $sk->id ) }}",
                     method: 'POST',
                     data: {
                         'tanggal_keluar': $('#tanggal_keluar').val(),
@@ -252,7 +252,7 @@
 
                         'tdl_null': "{{ $sk->tindak_lanjut }}",
 
-                        '_method': 'PUT',
+                        '_method': 'POST',
                         '_token': '{{ csrf_token() }}'
                     },
                     headers: {

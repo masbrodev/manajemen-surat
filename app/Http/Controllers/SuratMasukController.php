@@ -21,7 +21,7 @@ class SuratMasukController extends Controller
     {
         $data['sm'] = SuratMasuk::with(['berkas' => function ($q) {
             $q->where('surat_type', 'surat_masuk');
-        }])->orderBy('nomor_agenda', 'DESC')->get();
+        }])->orderBy('created_at', 'DESC')->get();
         return view('pages.dataSM', $data);
     }
 
@@ -136,6 +136,22 @@ class SuratMasukController extends Controller
         $data['berkas'] = Berkas::where('surat_id', $data['sm']->id)->where('surat_type', 'surat_masuk')->get();
 
         return view('pages.printSM', $data);
+
+        // return $data;
+    }
+
+    public function printlama($id)
+    {
+        $data['sm'] = SuratMasuk::where('id', $id)->first();
+
+        $data['ss'] = explode(",", $data['sm']->sifat_surat);
+        $data['lj'] = explode(",", $data['sm']->lajur_disposisi);
+        $data['ct'] = explode(",", $data['sm']->catatan);
+        $data['tdl'] = explode(",", $data['sm']->tindak_lanjut);
+
+        $data['berkas'] = Berkas::where('surat_id', $data['sm']->id)->where('surat_type', 'surat_masuk')->get();
+
+        return view('pages.printSMlama', $data);
 
         // return $data;
     }
